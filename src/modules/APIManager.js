@@ -25,6 +25,17 @@ class APIManager {
       .then(e => e.json())
   }
 
+  put(item, id) {
+    return fetch(`${remoteURL}/${this.resource}/${id}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify(item)
+    })
+      .then(e => e.json())
+  }
+
   delete(id) {
     return fetch(`${remoteURL}/${this.resource}/${id}`, {
       method: "DELETE"
