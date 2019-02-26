@@ -1,8 +1,9 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import Departments from './Departments';
-import DepartmentDetails from './DepartmentDetails'
+import DepartmentDetails from './DepartmentDetails';
 import APIManager from '../modules/APIManager';
+import Home from './Home'
 
 const departmentManager = new APIManager('departments')
 
@@ -49,6 +50,9 @@ class ApplicationViews extends Component {
 
     return (
       <React.Fragment>
+        <Route exact path="/" render={(props) => {
+          return <Home/>
+        }} />
         <Route exact path="/departments" render={(props) => {
           return <Departments
             departments={this.state.departments}
