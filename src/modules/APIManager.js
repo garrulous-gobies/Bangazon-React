@@ -11,7 +11,7 @@ class APIManager {
   }
 
   all() {
-    return fetch(`${remoteURL}/${this.resource}`).then(data => data.json())
+    return fetch(`${remoteURL}/${this.resource}/`).then(data => data.json())
   }
 
   post(item) {

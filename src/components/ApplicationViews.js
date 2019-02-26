@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Departments from './Departments';
 import APIManager from '../modules/APIManager';
 
-const departmentManager = new APIManager('department')
+const departmentManager = new APIManager('departments')
 
 class ApplicationViews extends Component {
 
@@ -25,7 +25,9 @@ class ApplicationViews extends Component {
 
     return (
       <React.Fragment>
-        <Departments departments={this.state.departments} />
+        <Route exact path="/departments" render={(props) => {
+        return <Departments departments={this.state.departments} />
+        }} />
       </React.Fragment >
     )
   }
