@@ -15,7 +15,7 @@ class APIManager {
   }
 
   post(item) {
-    return fetch(`${remoteURL}/${this.resource}`, {
+    return fetch(`${remoteURL}/${this.resource}/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8"
@@ -30,7 +30,7 @@ class APIManager {
       method: "DELETE"
     })
       .then(e => e.json())
-      .then(() => fetch(`${remoteURL}/${this.resource}`))
+      .then(() => fetch(`${remoteURL}/${this.resource}/`))
       .then(e => e.json())
   }
 }
