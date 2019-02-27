@@ -19,8 +19,11 @@ import Products from './Products'
 import ProductDetails from './ProductDetails'
 
 import paymentTypeManager from '../modules/paymentTypeManager'
+import productTypeManager from '../modules/productTypeManager'
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
+import ProductTypes from "./ProductType"
+import ProductTypeDetails from "./ProductTypeDetails"
 
 class ApplicationViews extends Component {
 
@@ -29,7 +32,8 @@ class ApplicationViews extends Component {
     departments: [],
     products: [],
     computers: [],
-    paymentTypes: []
+    paymentTypes: [],
+    productTypes: []
   }
 
   componentDidMount() {
@@ -38,21 +42,24 @@ class ApplicationViews extends Component {
       .then(depts => {
         this.setState({ 'departments': depts })
       })
-      .then(() => {
-        ComputerManager.getComputers()
-        .then( computers => this.setCompState(computers))
-      })
+    ComputerManager.getComputers()
+      .then(computers => this.setCompState(computers))
 
     paymentTypeManager.getPaymentTypes()
       .then(payType => {
         this.setState({ 'paymentTypes': payType })
       })
 
+    productTypeManager.getProductTypes()
+      .then(prodType => {
+        this.setState({ 'productTypes': prodType })
+      })
+
     CustManager.getCustomers()
       .then(custs => {
         this.setState({ 'customers': custs })
       })
-  
+
     ProductManager.getProducts()
       .then(products => {
         this.setState({ 'products': products })
@@ -80,6 +87,11 @@ class ApplicationViews extends Component {
     this.setState({ 'paymentTypes': payType })
   }
 
+  setProductTypeState = prodType => {
+    this.setState({ 'productTypes': prodType })
+  }
+
+
   render() {
 
     return (
@@ -91,14 +103,14 @@ class ApplicationViews extends Component {
           return <Customers
             customers={this.state.customers}
             setCustomerState={this.setCustomerState}
-            />
+          />
         }} />
         <Route exact path="/customers/:customerId(\d+)" render={(props) => {
           return <CustomerDetails
             {...props}
             customers={this.state.customers}
             setCustomerState={this.setCustomerState}
-            />
+          />
         }} />
         <Route exact path="/departments" render={(props) => {
           return <Departments
@@ -130,27 +142,41 @@ class ApplicationViews extends Component {
           return <Computers
             computers={this.state.computers}
             setCompState={this.setCompState}
-            />
+          />
         }} />
         <Route exact path="/computers/:computerId(\d+)" render={(props) => {
           return <ComputerDetails
             {...props}
             computers={this.state.computers}
             setCompState={this.setCompState}
-            />
+          />
+        }} />
+        <Route exact path="/product_types/" render={(props) => {
+          return <ProductTypes
+            {...props}
+            productTypes={this.state.productTypes}
+            setProductTypeState={this.setProductTypeState}
+          />
+        }} />
+        <Route exact path="/product_types/:productTypeId(\d+)" render={(props) => {
+          return <ProductTypeDetails
+            {...props}
+            productTypes={this.state.productTypes}
+            setProductTypeState={this.setProductTypeState}
+          />
         }} />
         <Route exact path="/products" render={(props) => {
           return <Products
             setProductState={this.setProductState}
             products={this.state.products}
-            />
+          />
         }} />
         <Route exact path="/products/:productId(\d+)" render={(props) => {
           return <ProductDetails
             {...props}
             products={this.state.products}
             setProductState={this.setProductState}
-            />
+          />
         }} />
       </React.Fragment >
     )
