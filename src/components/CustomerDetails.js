@@ -27,9 +27,9 @@ export default class Customer extends Component {
     city: '',
     state_: '',
     zipcode: '',
-    phone_number: '',
-    date_joined: '',
-    date_deleted: ''
+    phone_number: null,
+    date_joined: null,
+    date_deleted: null
   }
 
   handleFieldChange = evt => {
@@ -41,11 +41,18 @@ export default class Customer extends Component {
   custUpdateSubmit = (e, id) => {
     e.preventDefault()
     let item = {
-      name: this.state.dept_name,
-      budget: this.state.dept_budget
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      street_address: this.state.street_address,
+      city: this.state.city,
+      state: this.state.state_,
+      zipcode: this.state.zipcode,
+      phone_number: this.state.phone_number,
+      date_joined: this.state.date_joined,
+      date_deleted: this.state.date_deleted,
     }
     CustManager.updateCustomer(item, this.state.id)
-      .then((custs) => this.props.setDeptState(custs))
+      .then((cust) => this.props.setCustomerState(cust))
       .then(() => this.props.history.push("/customers"))
   }
 
@@ -78,7 +85,7 @@ export default class Customer extends Component {
           </p>
           <p>
             <label for="street_address">Street Address</label>
-            <input defaultValue={this.state.lastName} onChange={this.handleFieldChange} id='street_address' type='text'></input>
+            <input defaultValue={this.state.street_address} onChange={this.handleFieldChange} id='street_address' type='text'></input>
           </p>
           <p>
             <label for="city">City</label>
