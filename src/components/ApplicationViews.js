@@ -1,11 +1,10 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import Departments from './Departments';
 import DepartmentDetails from './DepartmentDetails';
-import APIManager from '../modules/APIManager';
 import Home from './Home'
+import DeptManager from '../modules/departmentManager'
 
-const departmentManager = new APIManager('departments')
 
 class ApplicationViews extends Component {
 
@@ -15,36 +14,17 @@ class ApplicationViews extends Component {
 
   componentDidMount() {
 
-    this.getDepartments()
+    DeptManager.getDepartments()
       .then(depts => {
         this.setState({ 'departments': depts })
       })
 
   }
 
-  getDepartments = () => {
-    return departmentManager.all()
+  setDeptState = (depts) => {
+    this.setState({ 'departments': depts })
   }
 
-  getSingleDepartment = id => {
-    return departmentManager.get(id)
-  }
-
-  // deleteDepartment = id => {
-  //   return departmentManager.delete(id)
-  // }
-
-  newDepartment = postItem => {
-    return departmentManager.post(postItem).then(() => this.getDepartments()).then(depts => {
-      this.setState({ 'departments': depts })
-    })
-  }
-
-  updateDepartment = (item, id) => {
-      return departmentManager.put(item, id).then(() => this.getDepartments()).then(depts => {
-        this.setState({ 'departments': depts })
-      })
-  }
 
   render() {
 
@@ -56,14 +36,14 @@ class ApplicationViews extends Component {
         <Route exact path="/departments" render={(props) => {
           return <Departments
             departments={this.state.departments}
-            newDepartment={this.newDepartment}
+            setDeptState={this.setDeptState}
             />
         }} />
         <Route exact path="/departments/:departmentId(\d+)" render={(props) => {
           return <DepartmentDetails
             {...props}
             departments={this.state.departments}
-            updateDepartment={this.updateDepartment}
+            setDeptState={this.setDeptState}
             />
         }} />
       </React.Fragment >

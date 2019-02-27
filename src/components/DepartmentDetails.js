@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DeptManager from '../modules/departmentManager'
 
 export default class Department extends Component {
 
@@ -28,7 +29,8 @@ export default class Department extends Component {
         name: this.state.dept_name,
         budget: this.state.dept_budget
     }
-    this.props.updateDepartment(item, this.state.id)
+    DeptManager.updateDepartment(item, this.state.id)
+    .then((depts) => this.props.setDeptState(depts))
     .then(() => this.props.history.push("/departments"))
   }
 
