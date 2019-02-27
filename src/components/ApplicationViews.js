@@ -14,6 +14,10 @@ import ComputerManager from '../modules/computerManager'
 import Computers from './Computers'
 import ComputerDetails from './ComputerDetails'
 
+import ProductManager from '../modules/productManager'
+import Products from './Products'
+import ProductDetails from './ProductDetails'
+
 import paymentTypeManager from '../modules/paymentTypeManager'
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
@@ -23,6 +27,7 @@ class ApplicationViews extends Component {
   state = {
     customers: [],
     departments: [],
+    products: [],
     computers: [],
     paymentTypes: []
   }
@@ -47,6 +52,11 @@ class ApplicationViews extends Component {
       .then(custs => {
         this.setState({ 'customers': custs })
       })
+  
+    ProductManager.getProducts()
+      .then(products => {
+        this.setState({ 'products': products })
+      })
 
   }
 
@@ -56,6 +66,10 @@ class ApplicationViews extends Component {
 
   setCustomerState = (custs) => {
     this.setState({ 'customers': custs })
+  }
+
+  setProductState = (products) => {
+    this.setState({ 'products': products })
   }
 
   setCompState = (computers) => {
@@ -125,10 +139,23 @@ class ApplicationViews extends Component {
             setCompState={this.setCompState}
             />
         }} />
+        <Route exact path="/products" render={(props) => {
+          return <Products
+            setProductState={this.setProductState}
+            products={this.state.products}
+            />
+        }} />
+        <Route exact path="/products/:productId(\d+)" render={(props) => {
+          return <ProductDetails
+            {...props}
+            products={this.state.products}
+            setProductState={this.setProductState}
+            />
+        }} />
       </React.Fragment >
     )
   }
-}
 
+}
 
 export default ApplicationViews

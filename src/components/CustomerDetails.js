@@ -59,6 +59,7 @@ export default class Customer extends Component {
   render() {
     return (
       <>
+        <h5><Link to={`/customers`}>Back to Customers</Link></h5>
         <h1>CUSTOMER DETAIL</h1>
         <ul>
           <li>Employee ID: {this.state.id}</li>
