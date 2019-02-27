@@ -2,8 +2,11 @@ import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import Departments from './Departments';
 import DepartmentDetails from './DepartmentDetails';
+import Computers from './Computers'
+import ComputerDetails from './ComputerDetails'
 import Home from './Home'
 import DeptManager from '../modules/departmentManager'
+import ComputerManager from '../modules/computerManager'
 import paymentTypeManager from '../modules/paymentTypeManager'
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
@@ -16,6 +19,7 @@ class ApplicationViews extends Component {
   state = {
     departments: [],
     paymentTypes: [],
+    computers: [],
     trainingProgram: []
   }
 
@@ -24,6 +28,10 @@ class ApplicationViews extends Component {
     DeptManager.getDepartments()
       .then(depts => {
         this.setState({ 'departments': depts })
+      })
+      .then(() => {
+        ComputerManager.getComputers()
+          .then(computers => this.setCompState(computers))
       })
 
     paymentTypeManager.getPaymentTypes()
@@ -40,6 +48,10 @@ class ApplicationViews extends Component {
 
   setDeptState = (depts) => {
     this.setState({ 'departments': depts })
+  }
+
+  setCompState = (computers) => {
+    this.setState({ 'computers': computers })
   }
 
   setPayTypeState = payType => {
@@ -95,6 +107,19 @@ class ApplicationViews extends Component {
             {...props}
             trainingProgram={this.state.trainingProgram}
             setTraingState={this.setTraingState}
+          />
+        }} />
+        <Route exact path="/computers" render={(props) => {
+          return <Computers
+            computers={this.state.computers}
+            setCompState={this.setCompState}
+          />
+        }} />
+        <Route exact path="/computers/:computerId(\d+)" render={(props) => {
+          return <ComputerDetails
+            {...props}
+            computers={this.state.computers}
+            setCompState={this.setCompState}
           />
         }} />
       </React.Fragment >
