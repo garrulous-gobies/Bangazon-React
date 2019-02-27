@@ -2,14 +2,18 @@ import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import Departments from './Departments';
 import DepartmentDetails from './DepartmentDetails';
+import Computers from './Computers'
+import ComputerDetails from './ComputerDetails'
 import Home from './Home'
 import DeptManager from '../modules/departmentManager'
+import ComputerManager from '../modules/computerManager'
 
 
 class ApplicationViews extends Component {
 
   state = {
-    departments: []
+    departments: [],
+    computers: []
   }
 
   componentDidMount() {
@@ -18,11 +22,19 @@ class ApplicationViews extends Component {
       .then(depts => {
         this.setState({ 'departments': depts })
       })
+      .then(() => {
+        ComputerManager.getComputers()
+        .then( computers => this.setCompState(computers))
+      })
 
   }
 
   setDeptState = (depts) => {
     this.setState({ 'departments': depts })
+  }
+
+  setCompState = (computers) => {
+    this.setState({ 'computers': computers })
   }
 
 
@@ -44,6 +56,19 @@ class ApplicationViews extends Component {
             {...props}
             departments={this.state.departments}
             setDeptState={this.setDeptState}
+            />
+        }} />
+        <Route exact path="/computers" render={(props) => {
+          return <Computers
+            computers={this.state.computers}
+            setCompState={this.setCompState}
+            />
+        }} />
+        <Route exact path="/computers/:computerId(\d+)" render={(props) => {
+          return <ComputerDetails
+            {...props}
+            computers={this.state.computers}
+            setCompState={this.setCompState}
             />
         }} />
       </React.Fragment >
