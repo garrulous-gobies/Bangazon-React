@@ -45,9 +45,9 @@ export default class Department extends Component {
           <li>Budget: ${this.state.dept_budget}</li>
         </ul>
         <form onSubmit={(e) => this.deptUpdateSubmit(e)}>
-          <label for="dept_name">Dept Name</label>
+          <label htmlFor="dept_name">Dept Name</label>
           <input defaultValue={this.state.dept_name} onChange={this.handleFieldChange} id='dept_name' type='text'></input>
-          <label for="dept_budget">Dept Budget</label>
+          <label htmlFor="dept_budget">Dept Budget</label>
           <input defaultValue={this.state.dept_budget} onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
           <button type='submit'>Complete Edit</button>
         </form>

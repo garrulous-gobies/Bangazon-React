@@ -39,9 +39,9 @@ export default class Department extends Component {
           )}
         </ul>
         <form onSubmit={this.newDeptSubmit}>
-          <label for="dept_name">Dept Name</label>
+          <label htmlFor="dept_name">Dept Name</label>
           <input onChange={this.handleFieldChange} id='dept_name' type='text'></input>
-          <label for="dept_budget">Dept Budget</label>
+          <label htmlFor="dept_budget">Dept Budget</label>
           <input onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
           <button type="submit">Create New Department</button>
         </form>
