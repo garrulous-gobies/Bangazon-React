@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import paymentTypeManager from '../modules/paymentTypeManager'
+import { Link } from "react-router-dom"
 
 
 export default class PaymentTypeDetails extends Component {
@@ -49,6 +50,7 @@ export default class PaymentTypeDetails extends Component {
   render() {
     return (
       <>
+        <h5><Link to={'/payment_types/'}>Back To Payment Types</Link></h5>
         <h1>Payment Type: {this.state.payType_name}</h1>
         <p>Account Number: {this.state.payType_accountNumber}</p>
         <br></br>

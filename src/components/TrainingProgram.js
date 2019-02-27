@@ -6,9 +6,9 @@ export default class TrainingPrograms extends Component {
 
   state = {
     training_name: '',
-    training_startDate: '',
-    training_endDate: '',
-    training_maxAttendees:''
+    training_startDate: null,
+    training_endDate: null,
+    training_maxAttendees: null
 
   }
 
@@ -25,7 +25,7 @@ export default class TrainingPrograms extends Component {
       startDate: this.state.training_startDate,
       endDate: this.state.training_endDate,
       maxAttendees: this.state.training_maxAttendees,
-      employee:""
+      employee: ""
     }
 
     trainingProgramManager.newTrainingProgram(newTrainingToSave)
@@ -33,15 +33,16 @@ export default class TrainingPrograms extends Component {
   }
 
 
-  render(){
-    return(
+  render() {
+    return (
       <>
-      <h1>Bangazon Training Programs</h1>
-      <ul>
+        <h5><Link to={`/`}>Back to API root</Link></h5>
+        <h1>Bangazon Training Programs</h1>
+        <ul>
           {this.props.trainingProgram.map(training =>
             <li key={training.id}><Link to={`/trainings/${training.id}`}> {training.name}</Link></li>
-        )}
-      </ul>
+          )}
+        </ul>
         <form onSubmit={(e) => this.newTrainingSubmit(e)}>
           <label htmlFor="training_name">Training Program Name</label>
           <input defaultValue={this.state.training_name} onChange={this.handleFieldChange} id='training_name' type='text'></input>
