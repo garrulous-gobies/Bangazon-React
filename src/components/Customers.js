@@ -24,7 +24,6 @@ export default class Customers extends Component {
   }
 
   newCustomerSubmit = e => {
-    console.log(e)
     e.preventDefault();
     const newCustToSave = {
       firstName: this.state.firstName,
