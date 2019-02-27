@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ProductManager from '../modules/productManager'
 import { Link } from "react-router-dom"
 
-export default class Department extends Component {
+export default class Products extends Component {
 
   state = {
     product_title: '',
@@ -38,8 +38,7 @@ export default class Department extends Component {
         <ul>
           {this.props.products.map(product =>
 
-            // <li key={product.id}><Link to={`/departments/${dept.id}`}> {dept.name}, ${dept.budget}</Link></li>
-            <li key={product.id}>{product.title}, {product.description}, ${product.price}</li>
+            <li key={product.id}><Link to={`/products/${product.id}`}>{product.title}, {product.description}, ${product.price} </Link> </li>
 
           )}
         </ul>
@@ -62,15 +61,3 @@ export default class Department extends Component {
     )
   }
 }
-
-/*
-
-title
-price
-description
-quantity
-
-customer
-product type
-
-*/

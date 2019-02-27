@@ -6,6 +6,7 @@ import Home from './Home'
 import DeptManager from '../modules/departmentManager'
 import Products from './Products'
 import ProductManager from '../modules/productManager'
+import ProductDetails from './ProductDetails'
 
 
 class ApplicationViews extends Component {
@@ -62,6 +63,13 @@ class ApplicationViews extends Component {
           return <Products
             setProductState={this.setProductState}
             products={this.state.products}
+            />
+        }} />
+        <Route exact path="/products/:productId(\d+)" render={(props) => {
+          return <ProductDetails
+            {...props}
+            products={this.state.products}
+            setProductState={this.setProductState}
             />
         }} />
       </React.Fragment >
