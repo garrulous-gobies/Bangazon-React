@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import DeptManager from '../modules/departmentManager'
+import { Link } from "react-router-dom"
 
 export default class Department extends Component {
 
@@ -37,6 +38,7 @@ export default class Department extends Component {
   render() {
     return (
       <>
+        <h5><Link to={`/departments`}>Back to Departments</Link></h5>
         <h1>DEPARTMENT</h1>
         <ul>
           <li>Name: {this.state.dept_name}</li>

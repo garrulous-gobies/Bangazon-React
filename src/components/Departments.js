@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import DeptManager from '../modules/departmentManager'
 import { Link } from "react-router-dom"
 
@@ -29,6 +29,7 @@ export default class Department extends Component {
   render() {
     return (
       <>
+        <h5><Link to={`/`}>Back to API root</Link></h5>
         <h1>BANGAZON DEPARTMENTS</h1>
         <ul>
           {this.props.departments.map(dept =>
