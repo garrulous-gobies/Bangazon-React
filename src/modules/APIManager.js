@@ -40,9 +40,6 @@ class APIManager {
     return fetch(`${remoteURL}/${this.resource}/${id}`, {
       method: "DELETE"
     })
-      .then(e => e.json())
-      .then(() => fetch(`${remoteURL}/${this.resource}/`))
-      .then(e => e.json())
   }
 }
 

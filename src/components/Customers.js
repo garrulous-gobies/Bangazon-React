@@ -10,11 +10,11 @@ export default class Customers extends Component {
     lastName: '',
     street_address: '',
     city: '',
-    state: '',
+    state_: '',
     zipcode: '',
-    phone_number: '',
-    date_joined: '',
-    date_deleted: ''
+    phone_number: null,
+    date_joined: null,
+    date_deleted: null
   }
 
   handleFieldChange = evt => {
@@ -24,21 +24,21 @@ export default class Customers extends Component {
   }
 
   newCustomerSubmit = e => {
+    console.log(e)
     e.preventDefault();
     const newCustToSave = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       street_address: this.state.street_address,
       city: this.state.city,
-      state: this.state.state,
+      state: this.state.state_,
       zipcode: this.state.zipcode,
       phone_number: this.state.phone_number,
       date_joined: this.state.date_joined,
       date_deleted: this.state.date_deleted
     }
-
     CustManager.newCustomer(newCustToSave)
-      .then((custs) => this.props.setCustomerState(custs))
+      .then((cust) => this.props.setCustomerState(cust))
   }
 
   render() {
@@ -71,8 +71,8 @@ export default class Customers extends Component {
             <input onChange={this.handleFieldChange} id='city' type='text'></input>
           </p>
           <p>
-            <label for="state">State</label>
-            <input onChange={this.handleFieldChange} id='state' type='text'></input>
+            <label for="state_">State</label>
+            <input onChange={this.handleFieldChange} id='state_' type='text'></input>
           </p>
           <p>
             <label for="zipcode">Zipcode</label>
