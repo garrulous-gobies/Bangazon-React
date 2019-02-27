@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CustManager from '../modules/customerManager'
+import { Link } from "react-router-dom";
 
 export default class Customer extends Component {
 
