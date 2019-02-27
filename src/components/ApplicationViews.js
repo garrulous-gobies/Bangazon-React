@@ -8,15 +8,19 @@ import Home from './Home'
 import DeptManager from '../modules/departmentManager'
 import ComputerManager from '../modules/computerManager'
 import paymentTypeManager from '../modules/paymentTypeManager'
+import productTypeManager from '../modules/productTypeManager'
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
+import ProductTypes from "./ProductType"
+import ProductTypeDetails from "./ProductTypeDetails"
 
 class ApplicationViews extends Component {
 
   state = {
     departments: [],
     computers: [],
-    paymentTypes: []
+    paymentTypes: [],
+    productTypes: []
   }
 
   componentDidMount() {
@@ -25,14 +29,17 @@ class ApplicationViews extends Component {
       .then(depts => {
         this.setState({ 'departments': depts })
       })
-      .then(() => {
         ComputerManager.getComputers()
-        .then( computers => this.setCompState(computers))
-      })
+          .then(computers => this.setCompState(computers))
 
     paymentTypeManager.getPaymentTypes()
       .then(payType => {
         this.setState({ 'paymentTypes': payType })
+      })
+
+    productTypeManager.getProductTypes()
+      .then(prodType => {
+        this.setState({ 'productTypes': prodType })
       })
 
   }
@@ -47,6 +54,10 @@ class ApplicationViews extends Component {
 
   setPayTypeState = payType => {
     this.setState({ 'paymentTypes': payType })
+  }
+
+  setProductTypeState = prodType => {
+    this.setState({ 'productTypes': prodType })
   }
 
 
@@ -87,16 +98,30 @@ class ApplicationViews extends Component {
           return <Computers
             computers={this.state.computers}
             setCompState={this.setCompState}
-            />
+          />
         }} />
         <Route exact path="/computers/:computerId(\d+)" render={(props) => {
           return <ComputerDetails
             {...props}
             computers={this.state.computers}
             setCompState={this.setCompState}
-            />
+          />
         }} />
-      </React.Fragment >
+        <Route exact path="/product_types/" render={(props) => {
+          return <ProductTypes
+            {...props}
+            productTypes={this.state.productTypes}
+            setProductTypeState={this.setProductTypeState}
+          />
+        }} />
+        <Route exact path="/product_types/:productTypeId(\d+)" render={(props) => {
+          return <ProductTypeDetails
+            {...props}
+            productTypes={this.state.productTypes}
+            setProductTypeState={this.setProductTypeState}
+          />
+        }} />
+      </React.Fragment>
     )
   }
 }
