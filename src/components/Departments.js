@@ -23,7 +23,7 @@ export default class Department extends Component {
       budget: this.state.dept_budget
     }
     DeptManager.newDepartment(newDeptToSave)
-    .then((depts) => this.props.setDeptState(depts))
+      .then((depts) => this.props.setDeptState(depts))
   }
 
   render() {
@@ -38,11 +38,11 @@ export default class Department extends Component {
           )}
         </ul>
         <form onSubmit={this.newDeptSubmit}>
-            <label for="dept_name">Dept Name</label>
-            <input onChange={this.handleFieldChange} id='dept_name' type='text'></input>
-            <label for="dept_budget">Dept Budget</label>
-            <input onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
-            <button type="submit">Create New Department</button>
+          <label for="dept_name">Dept Name</label>
+          <input onChange={this.handleFieldChange} id='dept_name' type='text'></input>
+          <label for="dept_budget">Dept Budget</label>
+          <input onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
+          <button type="submit">Create New Department</button>
         </form>
       </>
     )
