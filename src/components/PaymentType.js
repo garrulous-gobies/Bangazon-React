@@ -33,6 +33,7 @@ export default class PaymentType extends Component {
   render() {
     return (
       <>
+        <h5><Link to={`/`}>Back to API root</Link></h5>
         <h1>BANGAZON PAYMENT TYPES</h1>
         <ul>
           {this.props.paymentTypes.map(payType =>

@@ -22,6 +22,9 @@ import paymentTypeManager from '../modules/paymentTypeManager'
 import productTypeManager from '../modules/productTypeManager'
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
+import TrainingPrograms from "./TrainingProgram";
+import TrainingProgramDetail from "./TrainingProgramDetails";
+import trainingProgramManager from "../modules/trainingProgramManager";
 import ProductTypes from "./ProductType"
 import ProductTypeDetails from "./ProductTypeDetails"
 
@@ -30,9 +33,10 @@ class ApplicationViews extends Component {
   state = {
     customers: [],
     departments: [],
+    paymentTypes: [],
     products: [],
     computers: [],
-    paymentTypes: [],
+    trainingProgram: [],
     productTypes: []
   }
 
@@ -42,12 +46,18 @@ class ApplicationViews extends Component {
       .then(depts => {
         this.setState({ 'departments': depts })
       })
+
     ComputerManager.getComputers()
       .then(computers => this.setCompState(computers))
 
     paymentTypeManager.getPaymentTypes()
       .then(payType => {
         this.setState({ 'paymentTypes': payType })
+      })
+
+    trainingProgramManager.getTrainingPrograms()
+      .then(training => {
+        this.setState({ 'trainingProgram': training })
       })
 
     productTypeManager.getProductTypes()
@@ -85,6 +95,10 @@ class ApplicationViews extends Component {
 
   setPayTypeState = payType => {
     this.setState({ 'paymentTypes': payType })
+  }
+
+  setTrainingState = training => {
+    this.setState({ 'trainingProgram': training })
   }
 
   setProductTypeState = prodType => {
@@ -136,6 +150,19 @@ class ApplicationViews extends Component {
             {...props}
             paymentTypes={this.state.paymentTypes}
             setPayTypeState={this.setPayTypeState}
+          />
+        }} />
+        <Route exact path="/trainings/" render={(props) => {
+          return <TrainingPrograms
+            trainingProgram={this.state.trainingProgram}
+            setTrainingState={this.setTrainingState}
+          />
+        }} />
+        <Route exact path="/trainings/:trainingId(\d+)" render={(props) => {
+          return <TrainingProgramDetail
+            {...props}
+            trainingProgram={this.state.trainingProgram}
+            setTrainingState={this.setTrainingState}
           />
         }} />
         <Route exact path="/computers" render={(props) => {
