@@ -56,7 +56,7 @@ export default class Computer extends Component {
           <input onChange={this.handleFieldChange} id='manufacturer' type='text'></input>
           <label htmlFor="purchaseDate">purchaseDate</label>
           <input onChange={this.handleFieldChange} id='purchaseDate' type='date'></input>
-          <label htmlFor="decommissionDate">Dept Budget</label>
+          <label htmlFor="decommissionDate">Decommission Date: </label>
           <input onChange={this.handleFieldChange} id='decommissionDate' type='date'></input>
           <button type="submit">Create New Computer</button>
         </form>
