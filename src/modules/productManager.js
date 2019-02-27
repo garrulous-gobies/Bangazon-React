@@ -20,6 +20,10 @@ export default {
   updateProduct(item, id) {
     return productManager.put(item, id).then(() => this.getProducts()
     )
+  },
+
+  deleteProduct(id) {
+    return productManager.delete(id).then(() => this.getProducts())
   }
 
 }

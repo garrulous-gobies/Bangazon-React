@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductManager from '../modules/productManager'
+import productManager from '../modules/productManager';
 
 export default class ProductDetails extends Component {
 
@@ -45,6 +46,12 @@ export default class ProductDetails extends Component {
     .then(() => this.props.history.push("/products"))
   }
 
+  deleteProduct = id => {
+    productManager.deleteProduct(id)
+    .then((products) => this.props.setProductState(products))
+    .then(() => this.props.history.push("/products"))
+  }
+
     render() {
         return (
             <>
@@ -52,8 +59,12 @@ export default class ProductDetails extends Component {
                 <ul>
                     <li>Title: {this.state.product_title}</li>
                     <li>Price: ${this.state.product_price}</li>
-                    <li>Description: ${this.state.description}</li>
+                    <li>Description: {this.state.description}</li>
                 </ul>
+
+                <button onClick={() => this.deleteProduct(this.state.id)}>Delete Product</button>
+
+                <br></br>
                 <form onSubmit={(e) => this.productUpdateSubmit(e)}>
                     <label for="product_title">Product Title</label>
                     <input defaultValue={this.state.product_title} onChange={this.handleFieldChange} id='product_title' type='text'></input>
