@@ -35,6 +35,7 @@ export default class Products extends Component {
     return (
       <>
         <h1>BANGAZON PRODUCTS</h1>
+        <h5><Link to={`/`}>Back to API root</Link></h5>
         <ul>
           {this.props.products.map(product =>
 

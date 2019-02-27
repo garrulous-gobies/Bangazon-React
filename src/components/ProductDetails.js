@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom"
 import ProductManager from '../modules/productManager'
 import productManager from '../modules/productManager';
 
@@ -56,6 +57,7 @@ export default class ProductDetails extends Component {
         return (
             <>
                 <h1>PRODUCT DETAIL</h1>
+                <h5><Link to={`/products`}>Back to Products</Link></h5>
                 <ul>
                     <li>Title: {this.state.product_title}</li>
                     <li>Price: ${this.state.product_price}</li>
