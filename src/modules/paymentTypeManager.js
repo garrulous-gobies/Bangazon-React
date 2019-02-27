@@ -4,26 +4,26 @@ const paymentTypeManager = new APIManager('paymentType')
 
 export default {
 
-    getPaymentTypes() {
-        return paymentTypeManager.all()
-    },
+  getPaymentTypes() {
+    return paymentTypeManager.all()
+  },
 
-    getSinglePaymentType(id) {
-        return paymentTypeManager.get(id)
-    },
+  getSinglePaymentType(id) {
+    return paymentTypeManager.get(id)
+  },
 
-    newPaymentType(postItem) {
-        return paymentTypeManager.post(postItem).then(() => this.getPaymentTypes()
-        )
-    },
+  newPaymentType(postItem) {
+    return paymentTypeManager.post(postItem).then(() => this.getPaymentTypes()
+    )
+  },
 
-    updatePaymentType(item, id) {
-        return paymentTypeManager.put(item, id).then(() => this.getPaymentTypes()
-        )
-    },
+  updatePaymentType(item, id) {
+    return paymentTypeManager.put(item, id).then(() => this.getPaymentTypes()
+    )
+  },
 
-    deletePaymentType(id) {
-        return paymentTypeManager.delete(id)
-    }    
+  deletePaymentType(id) {
+    return paymentTypeManager.delete(id).then(() => this.getPaymentTypes())
+  }
 
 }
