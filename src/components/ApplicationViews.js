@@ -133,7 +133,7 @@ class ApplicationViews extends Component {
             setOrderState={this.setOrderState}
           />
         }} />
-        <Route exact path="/customers/:customerId(\d+)" render={(props) => {
+        <Route exact path="/orders/:orderId(\d+)" render={(props) => {
           return <OrderDetails
             {...props}
             orders={this.state.orders}

@@ -1,0 +1,63 @@
+import React, { Component } from 'react';
+import OrderManager from '../modules/orderManager'
+import { Link } from "react-router-dom";
+
+export default class Order extends Component {
+
+  componentDidMount() {
+    const order = this.props.orders.find(o => o.id === parseInt(this.props.match.params.orderId)) || {}
+    this.setState({
+      id: order.id,
+      customer: order.customer,
+      payment_date: order.payment_date,
+      payment_type: order.payment_type,
+    })
+  }
+
+  state = {
+    id: null,
+    customer: null,
+    payment_date: null,
+    payment_type: null
+  }
+
+  handleFieldChange = evt => {
+    const stateToChange = {}
+    stateToChange[evt.target.id] = evt.target.value
+    this.setState(stateToChange)
+  }
+
+  OrderUpdateSubmit = (e, id) => {
+    e.preventDefault()
+    let item = {
+      customer: this.state.customer,
+      payment_date: this.state.payment_date,
+      payment_type: this.state.payment_type
+    }
+    OrderManager.updateOrder(item, this.state.id)
+      .then((order) => this.props.setOrderState(order))
+      .then(() => this.props.history.push("/orders"))
+  }
+
+  render() {
+    return (
+      <>
+        <h5><Link to={`/orders`}>Back to Orders</Link></h5>
+        <h1>ORDER DETAIL</h1>
+        <ul>
+          <li>Order ID: {this.state.id}</li>
+          <li>Customer ID: {this.state.customer}</li>
+          <li>Payment Type ID: {this.state.payment_type}</li>
+          <li>Payment Date: {this.state.payment_date}</li>
+        </ul>
+        <form onSubmit={(e) => this.OrderUpdateSubmit(e)}>
+          <p>
+            <label htmlFor="payment_date">Payment Date</label>
+            <input onChange={this.handleFieldChange} id='payment_date' type='date'></input>
+          </p>
+          <button type="submit">Complete Edit</button>
+        </form>
+      </>
+    )
+  }
+}
