@@ -1,15 +1,23 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import Home from './Home'
+
+import DeptManager from '../modules/departmentManager'
 import Departments from './Departments';
 import DepartmentDetails from './DepartmentDetails';
+
+import CustManager from '../modules/customerManager'
+import Customers from './Customers';
+import CustomerDetails from './CustomerDetails';
+
+import ComputerManager from '../modules/computerManager'
 import Computers from './Computers'
 import ComputerDetails from './ComputerDetails'
-import Home from './Home'
-import DeptManager from '../modules/departmentManager'
-import Products from './Products'
+
 import ProductManager from '../modules/productManager'
+import Products from './Products'
 import ProductDetails from './ProductDetails'
-import ComputerManager from '../modules/computerManager'
+
 import paymentTypeManager from '../modules/paymentTypeManager'
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
@@ -17,6 +25,7 @@ import PaymentTypeDetails from "./PaymentTypeDetails";
 class ApplicationViews extends Component {
 
   state = {
+    customers: [],
     departments: [],
     products: [],
     computers: [],
@@ -39,6 +48,11 @@ class ApplicationViews extends Component {
         this.setState({ 'paymentTypes': payType })
       })
 
+    CustManager.getCustomers()
+      .then(custs => {
+        this.setState({ 'customers': custs })
+      })
+  
     ProductManager.getProducts()
       .then(products => {
         this.setState({ 'products': products })
@@ -50,10 +64,14 @@ class ApplicationViews extends Component {
     this.setState({ 'departments': depts })
   }
 
+  setCustomerState = (custs) => {
+    this.setState({ 'customers': custs })
+  }
+
   setProductState = (products) => {
     this.setState({ 'products': products })
   }
-    
+
   setCompState = (computers) => {
     this.setState({ 'computers': computers })
   }
@@ -62,13 +80,25 @@ class ApplicationViews extends Component {
     this.setState({ 'paymentTypes': payType })
   }
 
-
   render() {
 
     return (
       <React.Fragment>
         <Route exact path="/" render={(props) => {
           return <Home />
+        }} />
+        <Route exact path="/customers" render={(props) => {
+          return <Customers
+            customers={this.state.customers}
+            setCustomerState={this.setCustomerState}
+            />
+        }} />
+        <Route exact path="/customers/:customerId(\d+)" render={(props) => {
+          return <CustomerDetails
+            {...props}
+            customers={this.state.customers}
+            setCustomerState={this.setCustomerState}
+            />
         }} />
         <Route exact path="/departments" render={(props) => {
           return <Departments
