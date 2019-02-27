@@ -44,6 +44,7 @@ export default class Customers extends Component {
   render() {
     return (
       <>
+        <h5><Link to={`/`}>Back to API root</Link></h5>
         <h1>BANGAZON CUSTOMERS</h1>
         <ul>
           {this.props.customers.map(cust =>
