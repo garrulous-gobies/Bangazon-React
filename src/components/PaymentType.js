@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import paymentTypeManager from '../modules/paymentTypeManager'
 import { Link } from "react-router-dom"
 
@@ -16,6 +16,8 @@ export default class PaymentType extends Component {
         this.setState(stateToChange)
     }
 
+
+    // TODO: figure out a way to add a specific customer to a payment type when creating a new payment type
     newPayTypeSubmit = e => {
         e.preventDefault();
         const newPayTypeToSave = {
@@ -27,7 +29,7 @@ export default class PaymentType extends Component {
             .then((payType) => this.props.setPayTypeState(payType))
     }
 
-
+    // TODO: display customer name with payment type info
     render() {
         return (
             <>
@@ -35,17 +37,18 @@ export default class PaymentType extends Component {
                 <ul>
                     {this.props.paymentTypes.map(payType =>
 
-                        <li key={payType.id}><Link to={`/payment_types/${payType.id}`}> {payType.name}, {payType.accountNumber}</Link></li>
+                        <li key={payType.id}><Link to={`/payment_types/${payType.id}`}> {payType.name} -- {payType.accountNumber}</Link></li>
 
                     )}
                 </ul>
                 <form onSubmit={(e) => this.newPayTypeSubmit(e)}>
-                    <label for="payType_name">Payment Type Name</label>
+                    <label htmlFor="payType_name">Payment Type Name</label>
                     <input defaultValue={this.state.payType_name} onChange={this.handleFieldChange} id='payType_name' type='text'></input>
-                    <label for="payType_accountNumber">Payment Type Account Number</label>
+                    <label htmlFor="payType_accountNumber">Payment Type Account Number</label>
                     <input defaultValue={this.state.payType_accountNumber} onChange={this.handleFieldChange} id='payType_accountNumber' type='text'></input>
                     <button type='submit'>Create New Payment Type</button>
                 </form>
+                
             </>
         )
     }

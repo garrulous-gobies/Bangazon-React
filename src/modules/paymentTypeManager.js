@@ -20,6 +20,10 @@ export default {
     updatePaymentType(item, id) {
         return paymentTypeManager.put(item, id).then(() => this.getPaymentTypes()
         )
-    }
+    },
+
+    deletePaymentType(id) {
+        return paymentTypeManager.delete(id)
+    }    
 
 }

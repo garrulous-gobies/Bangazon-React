@@ -6,6 +6,7 @@ import Home from './Home'
 import DeptManager from '../modules/departmentManager'
 import paymentTypeManager from '../modules/paymentTypeManager'
 import PaymentType from "./PaymentType";
+import PaymentTypeDetails from "./PaymentTypeDetails";
 
 class ApplicationViews extends Component {
 
@@ -59,6 +60,13 @@ class ApplicationViews extends Component {
                 }} />
                 <Route exact path="/payment_types/" render={(props) => {
                     return <PaymentType
+                        paymentTypes={this.state.paymentTypes}
+                        setPayTypeState={this.setPayTypeState}
+                    />
+                }} />
+                <Route exact path="/payment_types/:paymentTypeId(\d+)" render={(props) => {
+                    return <PaymentTypeDetails
+                        {...props}
                         paymentTypes={this.state.paymentTypes}
                         setPayTypeState={this.setPayTypeState}
                     />
