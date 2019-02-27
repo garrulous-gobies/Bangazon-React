@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DeptManager from '../modules/departmentManager'
 import { Link } from "react-router-dom"
 
 
@@ -21,7 +22,8 @@ export default class Department extends Component {
       name: this.state.dept_name,
       budget: this.state.dept_budget
     }
-    this.props.newDepartment(newDeptToSave)
+    DeptManager.newDepartment(newDeptToSave)
+    .then((depts) => this.props.setDeptState(depts))
   }
 
   render() {
