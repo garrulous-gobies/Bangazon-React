@@ -7,12 +7,16 @@ import DeptManager from '../modules/departmentManager'
 import paymentTypeManager from '../modules/paymentTypeManager'
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
+import TrainingPrograms from "./TrainingProgram";
+import TrainingProgramDetail from "./TrainingProgramDetails";
+import trainingProgramManager from "../modules/trainingProgramManager";
 
 class ApplicationViews extends Component {
 
   state = {
     departments: [],
-    paymentTypes: []
+    paymentTypes: [],
+    trainingProgram: []
   }
 
   componentDidMount() {
@@ -27,6 +31,11 @@ class ApplicationViews extends Component {
         this.setState({ 'paymentTypes': payType })
       })
 
+    trainingProgramManager.getTrainingPrograms()
+      .then(training => {
+        this.setState({ 'trainingProgram': training })
+      })
+
   }
 
   setDeptState = (depts) => {
@@ -35,6 +44,10 @@ class ApplicationViews extends Component {
 
   setPayTypeState = payType => {
     this.setState({ 'paymentTypes': payType })
+  }
+
+  setTraingState = training => {
+    this.setState({ 'trainingProgram': training })
   }
 
 
@@ -69,6 +82,19 @@ class ApplicationViews extends Component {
             {...props}
             paymentTypes={this.state.paymentTypes}
             setPayTypeState={this.setPayTypeState}
+          />
+        }} />
+        <Route exact path="/trainings/" render={(props) => {
+          return <TrainingPrograms
+            trainingProgram={this.state.trainingProgram}
+            setTraingState={this.setTraingState}
+          />
+        }} />
+        <Route exact path="/trainings/:trainingId(\d+)" render={(props) => {
+          return <TrainingProgramDetail
+            {...props}
+            trainingProgram={this.state.trainingProgram}
+            setTraingState={this.setTraingState}
           />
         }} />
       </React.Fragment >

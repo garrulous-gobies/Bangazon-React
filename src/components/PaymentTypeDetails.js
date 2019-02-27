@@ -45,7 +45,7 @@ export default class PaymentTypeDetails extends Component {
   }
 
 
-
+// TODO: add logic to remove delete button from options with with orders associated with it
   render() {
     return (
       <>
