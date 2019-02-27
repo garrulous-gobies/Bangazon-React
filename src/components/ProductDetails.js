@@ -62,6 +62,7 @@ export default class ProductDetails extends Component {
                     <li>Title: {this.state.product_title}</li>
                     <li>Price: ${this.state.product_price}</li>
                     <li>Description: {this.state.description}</li>
+                    <li>Quantity: {this.state.quantity}</li>
                 </ul>
 
                 <button onClick={() => this.deleteProduct(this.state.id)}>Delete Product</button>
