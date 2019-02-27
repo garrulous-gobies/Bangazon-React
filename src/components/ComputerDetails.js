@@ -43,11 +43,18 @@ export default class ComputerDetails extends Component {
     .then(() => this.props.history.push("/computers"))
   }
 
+  deleteOnClick = (id) => {
+    computerManager.deleteComputer(id)
+    .then((computers) => this.props.setCompState(computers))
+    .then(() => this.props.history.push("/computers"))
+  }
+
     render() {
         return (
             <>
                 <h1>COMPUTER</h1>
                 <h5><Link to={'/computers'}>Back To Computer List</Link></h5>
+                <button onClick={() => this.deleteOnClick(this.state.id)}>Delete Computer</button>
                 <ul>
                     <li>Name: {this.state.model}</li>
                     <li>Manufacturer: {this.state.manufacturer}</li>
@@ -62,13 +69,13 @@ export default class ComputerDetails extends Component {
                     <li><Link to={`/computers/${this.state.id}`}>URL: {this.state.url}</Link></li>
                 </ul>
                 <form onSubmit={(e) => this.compUpdateSubmit(e)}>
-                    <label for="model">Dept Name</label>
+                    <label htmlFor="model">Dept Name</label>
                     <input defaultValue={this.state.model} onChange={this.handleFieldChange} id='model' type='text'></input>
-                    <label for="manufacturer">Dept Budget</label>
+                    <label htmlFor="manufacturer">Dept Budget</label>
                     <input defaultValue={this.state.manufacturer} onChange={this.handleFieldChange} id='manufacturer' type='text'></input>
-                    <label for="purchaseDate">purchaseDate</label>
+                    <label htmlFor="purchaseDate">purchaseDate</label>
                     <input defaultValue={this.state.purchaseDate} onChange={this.handleFieldChange} id='purchaseDate' type='date'></input>
-                    <label for="decommissionDate">Dept Budget</label>
+                    <label htmlFor="decommissionDate">Dept Budget</label>
                     <input defaultValue={this.state.decommissionDate} onChange={this.handleFieldChange} id='decommissionDate' type='date'></input>
                     <button type='submit'>Complete Edit</button>
                 </form>

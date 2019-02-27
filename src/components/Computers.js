@@ -50,13 +50,13 @@ export default class Computer extends Component {
           </ul>
         )}
         <form onSubmit={this.newCompSubmit}>
-          <label for="model">Computer model</label>
+          <label htmlFor="model">Computer model</label>
           <input onChange={this.handleFieldChange} id='model' type='text'></input>
-          <label for="manufacturer">Computer manufacturer</label>
+          <label htmlFor="manufacturer">Computer manufacturer</label>
           <input onChange={this.handleFieldChange} id='manufacturer' type='text'></input>
-          <label for="purchaseDate">purchaseDate</label>
+          <label htmlFor="purchaseDate">purchaseDate</label>
           <input onChange={this.handleFieldChange} id='purchaseDate' type='date'></input>
-          <label for="decommissionDate">Dept Budget</label>
+          <label htmlFor="decommissionDate">Dept Budget</label>
           <input onChange={this.handleFieldChange} id='decommissionDate' type='date'></input>
           <button type="submit">Create New Computer</button>
         </form>

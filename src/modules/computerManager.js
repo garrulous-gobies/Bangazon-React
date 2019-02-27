@@ -23,7 +23,7 @@ export default {
   },
 
   deleteComputer(id) {
-    return computerManager.delete(id)
+    return computerManager.delete(id).then(() => this.getComputers())
   }
 
 }
