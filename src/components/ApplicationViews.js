@@ -58,7 +58,7 @@ class ApplicationViews extends Component {
     this.setState({ 'paymentTypes': payType })
   }
 
-  setTraingState = training => {
+  setTrainingState = training => {
     this.setState({ 'trainingProgram': training })
   }
 
@@ -99,14 +99,14 @@ class ApplicationViews extends Component {
         <Route exact path="/trainings/" render={(props) => {
           return <TrainingPrograms
             trainingProgram={this.state.trainingProgram}
-            setTraingState={this.setTraingState}
+            setTrainingState={this.setTrainingState}
           />
         }} />
         <Route exact path="/trainings/:trainingId(\d+)" render={(props) => {
           return <TrainingProgramDetail
             {...props}
             trainingProgram={this.state.trainingProgram}
-            setTraingState={this.setTraingState}
+            setTrainingState={this.setTrainingState}
           />
         }} />
         <Route exact path="/computers" render={(props) => {
