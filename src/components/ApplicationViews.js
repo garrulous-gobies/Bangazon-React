@@ -1,16 +1,19 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import Home from './Home'
+
+import DeptManager from '../modules/departmentManager'
 import Departments from './Departments';
 import DepartmentDetails from './DepartmentDetails';
-import Customers from './Customers';
+
 import CustManager from '../modules/customerManager'
-import Home from './Home'
-import DeptManager from '../modules/departmentManager'
+import Customers from './Customers';
+import CustomerDetails from './CustomerDetails';
+
+import ComputerManager from '../modules/computerManager'
 import Computers from './Computers'
 import ComputerDetails from './ComputerDetails'
-import Home from './Home'
-import DeptManager from '../modules/departmentManager'
-import ComputerManager from '../modules/computerManager'
+
 import paymentTypeManager from '../modules/paymentTypeManager'
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
