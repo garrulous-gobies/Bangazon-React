@@ -56,39 +56,39 @@ export default class Customers extends Component {
         <h1>ADD NEW CUSTOMER</h1>
         <form onSubmit={this.newCustomerSubmit}>
           <p>
-            <label for="firstName">First Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input onChange={this.handleFieldChange} id='firstName' type='text'></input>
           </p>
           <p>
-            <label for="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input onChange={this.handleFieldChange} id='lastName' type='text'></input>
           </p>
           <p>
-            <label for="street_address">Street Address</label>
+            <label htmlFor="street_address">Street Address</label>
             <input onChange={this.handleFieldChange} id='street_address' type='text'></input>
           </p>
           <p>
-            <label for="city">City</label>
+            <label htmlFor="city">City</label>
             <input onChange={this.handleFieldChange} id='city' type='text'></input>
           </p>
           <p>
-            <label for="state_">State</label>
+            <label htmlFor="state_">State</label>
             <input onChange={this.handleFieldChange} id='state_' type='text'></input>
           </p>
           <p>
-            <label for="zipcode">Zipcode</label>
+            <label htmlFor="zipcode">Zipcode</label>
             <input onChange={this.handleFieldChange} id='zipcode' type='text'></input>
           </p>
           <p>
-            <label for="phone_number">Phone Number</label>
+            <label htmlFor="phone_number">Phone Number</label>
             <input onChange={this.handleFieldChange} id='phone_number' type='number'></input>
           </p>
           <p>
-            <label for="date_joined">Date Joined</label>
+            <label htmlFor="date_joined">Date Joined</label>
             <input onChange={this.handleFieldChange} id='date_joined' type='date'></input>
           </p>
           <p>
-            <label for="date_deleted">Date Deleted</label>
+            <label htmlFor="date_deleted">Date Deleted</label>
             <input onChange={this.handleFieldChange} id='date_deleted' type='date'></input>
           </p>
           <button type="submit">Add New Customer</button>

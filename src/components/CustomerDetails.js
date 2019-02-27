@@ -78,39 +78,39 @@ export default class Customer extends Component {
         </ul>
         <form onSubmit={(e) => this.custUpdateSubmit(e)}>
           <p>
-            <label for="firstName">First Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input defaultValue={this.state.firstName} onChange={this.handleFieldChange} id='firstName' type='text'></input>
           </p>
           <p>
-            <label for="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input defaultValue={this.state.lastName} onChange={this.handleFieldChange} id='lastName' type='text'></input>
           </p>
           <p>
-            <label for="street_address">Street Address</label>
+            <label htmlFor="street_address">Street Address</label>
             <input defaultValue={this.state.street_address} onChange={this.handleFieldChange} id='street_address' type='text'></input>
           </p>
           <p>
-            <label for="city">City</label>
+            <label htmlFor="city">City</label>
             <input defaultValue={this.state.city} onChange={this.handleFieldChange} id='city' type='text'></input>
           </p>
           <p>
-            <label for="state_">State</label>
+            <label htmlFor="state_">State</label>
             <input defaultValue={this.state.state_} onChange={this.handleFieldChange} id='state_' type='text'></input>
           </p>
           <p>
-            <label for="zipcode">Zipcode</label>
+            <label htmlFor="zipcode">Zipcode</label>
             <input defaultValue={this.state.zipcode} onChange={this.handleFieldChange} id='zipcode' type='text'></input>
           </p>
           <p>
-            <label for="phone_number">Phone Number</label>
+            <label htmlFor="phone_number">Phone Number</label>
             <input defaultValue={this.state.phone_number} onChange={this.handleFieldChange} id='phone_number' type='number'></input>
           </p>
           <p>
-            <label for="date_joined">Date Joined</label>
+            <label htmlFor="date_joined">Date Joined</label>
             <input defaultValue={this.state.date_joined} onChange={this.handleFieldChange} id='date_joined' type='date'></input>
           </p>
           <p>
-            <label for="date_deleted">Date Deleted</label>
+            <label htmlFor="date_deleted">Date Deleted</label>
             <input defaultValue={this.state.date_deleted} onChange={this.handleFieldChange} id='date_deleted' type='date'></input>
           </p>
           <button type='submit'>Complete Edit</button>
