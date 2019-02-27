@@ -50,16 +50,16 @@ export default class ComputerDetails extends Component {
                 <h5><Link to={'/computers'}>Back To Computer List</Link></h5>
                 <ul>
                     <li>Name: {this.state.model}</li>
-                    <li>Manufacturer:{this.state.manufacturer}</li>
+                    <li>Manufacturer: {this.state.manufacturer}</li>
                     <li>Purchase Date: {this.state.purchaseDate}</li>
                     {
                       this.state.decommissionDate == null
                       ?
                       <li>Decommission Date: Still In Use </li>
                       :
-                      <li>Decommission Date:{this.state.decommissionDate}</li>
+                      <li>Decommission Date: {this.state.decommissionDate}</li>
                     }
-                    <li><Link to={`/computers/${this.state.id}`}>URL:{this.state.url}</Link></li>
+                    <li><Link to={`/computers/${this.state.id}`}>URL: {this.state.url}</Link></li>
                 </ul>
                 <form onSubmit={(e) => this.compUpdateSubmit(e)}>
                     <label for="model">Dept Name</label>

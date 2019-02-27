@@ -39,8 +39,14 @@ export default class Computer extends Component {
             <li>Model: {comp.model}</li>
             <li>manufacturer: {comp.manufacturer}</li>
             <li>Purchase Date: {comp.purchaseDate}</li>
-            <li>Decommission Date: {comp.decommissionDate}</li>
-            <li><Link to={`/computers/${comp.id}`}>URL:{comp.url}</Link></li>
+            {
+              comp.decommissionDate == null
+                ?
+                <li>Decommission Date: Still In Use </li>
+                :
+                <li>Decommission Date: {comp.decommissionDate}</li>
+            }
+            <li><Link to={`/computers/${comp.id}`}>URL: {comp.url}</Link></li>
           </ul>
         )}
         <form onSubmit={this.newCompSubmit}>
