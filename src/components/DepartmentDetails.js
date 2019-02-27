@@ -10,7 +10,7 @@ export default class Department extends Component {
       'dept_budget': dept.budget,
       'id': dept.id
     })
- }
+  }
 
   state = {
     dept_name: '',
@@ -26,30 +26,30 @@ export default class Department extends Component {
   deptUpdateSubmit = (e, id) => {
     e.preventDefault()
     let item = {
-        name: this.state.dept_name,
-        budget: this.state.dept_budget
+      name: this.state.dept_name,
+      budget: this.state.dept_budget
     }
     DeptManager.updateDepartment(item, this.state.id)
-    .then((depts) => this.props.setDeptState(depts))
-    .then(() => this.props.history.push("/departments"))
+      .then((depts) => this.props.setDeptState(depts))
+      .then(() => this.props.history.push("/departments"))
   }
 
-    render() {
-        return (
-            <>
-                <h1>DEPARTMENT</h1>
-                <ul>
-                    <li>Name: {this.state.dept_name}</li>
-                    <li>Budget: ${this.state.dept_budget}</li>
-                </ul>
-                <form onSubmit={(e) => this.deptUpdateSubmit(e)}>
-                    <label for="dept_name">Dept Name</label>
-                    <input defaultValue={this.state.dept_name} onChange={this.handleFieldChange} id='dept_name' type='text'></input>
-                    <label for="dept_budget">Dept Budget</label>
-                    <input defaultValue={this.state.dept_budget} onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
-                    <button type='submit'>Complete Edit</button>
-                </form>
-            </>
-        )
-    }
+  render() {
+    return (
+      <>
+        <h1>DEPARTMENT</h1>
+        <ul>
+          <li>Name: {this.state.dept_name}</li>
+          <li>Budget: ${this.state.dept_budget}</li>
+        </ul>
+        <form onSubmit={(e) => this.deptUpdateSubmit(e)}>
+          <label for="dept_name">Dept Name</label>
+          <input defaultValue={this.state.dept_name} onChange={this.handleFieldChange} id='dept_name' type='text'></input>
+          <label for="dept_budget">Dept Budget</label>
+          <input defaultValue={this.state.dept_budget} onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
+          <button type='submit'>Complete Edit</button>
+        </form>
+      </>
+    )
+  }
 }

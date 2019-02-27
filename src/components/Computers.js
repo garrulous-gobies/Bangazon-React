@@ -34,6 +34,7 @@ export default class Computer extends Component {
     return (
       <>
         <h1>BANGAZON COMPUTERS</h1>
+        <h5><Link to={`/`}>Back to API root</Link></h5>
         {this.props.computers.map(comp =>
           <ul key={comp.id}>
             <li>Model: {comp.model}</li>
