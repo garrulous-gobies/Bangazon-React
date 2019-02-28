@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import DeptManager from '../modules/departmentManager'
 import { Link } from "react-router-dom"
 
@@ -29,6 +29,7 @@ export default class Department extends Component {
   render() {
     return (
       <>
+        <h5><Link to={`/`}>Back to API root</Link></h5>
         <h1>BANGAZON DEPARTMENTS</h1>
         <ul>
           {this.props.departments.map(dept =>
@@ -38,9 +39,9 @@ export default class Department extends Component {
           )}
         </ul>
         <form onSubmit={this.newDeptSubmit}>
-          <label for="dept_name">Dept Name</label>
+          <label htmlFor="dept_name">Dept Name</label>
           <input onChange={this.handleFieldChange} id='dept_name' type='text'></input>
-          <label for="dept_budget">Dept Budget</label>
+          <label htmlFor="dept_budget">Dept Budget</label>
           <input onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
           <button type="submit">Create New Department</button>
         </form>
