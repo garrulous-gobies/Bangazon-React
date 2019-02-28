@@ -17,6 +17,7 @@ export default class Department extends Component {
   }
 
   newDeptSubmit = e => {
+    e.target.checkValidity()
     e.preventDefault();
     const newDeptToSave = {
       name: this.state.dept_name,
@@ -40,9 +41,9 @@ export default class Department extends Component {
         </ul>
         <form onSubmit={this.newDeptSubmit}>
           <label htmlFor="dept_name">Dept Name</label>
-          <input onChange={this.handleFieldChange} id='dept_name' type='text'></input>
+          <input required onChange={this.handleFieldChange} id='dept_name' type='text'></input>
           <label htmlFor="dept_budget">Dept Budget</label>
-          <input onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
+          <input required onChange={this.handleFieldChange} id='dept_budget' type='number'></input>
           <button type="submit">Create New Department</button>
         </form>
       </>

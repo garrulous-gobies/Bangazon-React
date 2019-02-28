@@ -19,6 +19,7 @@ export default class TrainingPrograms extends Component {
   }
 
   newTrainingSubmit = e => {
+    e.target.checkValidity()
     e.preventDefault();
     const newTrainingToSave = {
       name: this.state.training_name,
@@ -45,13 +46,13 @@ export default class TrainingPrograms extends Component {
         </ul>
         <form onSubmit={(e) => this.newTrainingSubmit(e)}>
           <label htmlFor="training_name">Training Program Name</label>
-          <input defaultValue={this.state.training_name} onChange={this.handleFieldChange} id='training_name' type='text'></input>
+          <input required defaultValue={this.state.training_name} onChange={this.handleFieldChange} id='training_name' type='text'></input>
           <label htmlFor="training_startDate">Start Date</label>
-          <input defaultValue={this.state.training_startDate} onChange={this.handleFieldChange} id='training_startDate' type='date'></input>
+          <input required defaultValue={this.state.training_startDate} onChange={this.handleFieldChange} id='training_startDate' type='date'></input>
           <label htmlFor="training_endDate">End Date</label>
-          <input defaultValue={this.state.training_endDate} onChange={this.handleFieldChange} id='training_endDate' type='date'></input>
+          <input required defaultValue={this.state.training_endDate} onChange={this.handleFieldChange} id='training_endDate' type='date'></input>
           <label htmlFor="training_maxAttendees">Max Attendees</label>
-          <input defaultValue={this.state.training_maxAttendees} onChange={this.handleFieldChange} id='training_maxAttendees' type='text'></input>
+          <input required defaultValue={this.state.training_maxAttendees} onChange={this.handleFieldChange} id='training_maxAttendees' type='number'></input>
           <button type='submit'>Create New Training Program</button>
         </form>
       </>
