@@ -42,7 +42,7 @@ export default class Employee extends Component {
     return (
       <>
         <h5><Link to={`/`}>Back to API root</Link></h5>
-        <h1>Bangazon Employees</h1>
+        <h1>BANGAZON EMPLOYEES</h1>
         <ul>
           {this.props.employees.map(emp =>
 
