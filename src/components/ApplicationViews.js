@@ -28,6 +28,10 @@ import trainingProgramManager from "../modules/trainingProgramManager";
 import ProductTypes from "./ProductType"
 import ProductTypeDetails from "./ProductTypeDetails"
 
+import employeeManager from '../modules/employeeManager'
+import Employee from "./Employee";
+import EmployeeDetails from "./EmployeeDetails";
+
 class ApplicationViews extends Component {
 
   state = {
@@ -37,7 +41,8 @@ class ApplicationViews extends Component {
     products: [],
     computers: [],
     trainingProgram: [],
-    productTypes: []
+    productTypes: [],
+    employees: []
   }
 
   componentDidMount() {
@@ -75,6 +80,11 @@ class ApplicationViews extends Component {
         this.setState({ 'products': products })
       })
 
+    employeeManager.getEmployees()
+      .then(emps => {
+        this.setState({ 'employees': emps })
+      })
+
   }
 
   setDeptState = (depts) => {
@@ -103,6 +113,10 @@ class ApplicationViews extends Component {
 
   setProductTypeState = prodType => {
     this.setState({ 'productTypes': prodType })
+  }
+
+  setEmployeeState = emp => {
+    this.setState({ 'employees': emp })
   }
 
 
@@ -203,6 +217,19 @@ class ApplicationViews extends Component {
             {...props}
             products={this.state.products}
             setProductState={this.setProductState}
+          />
+        }} />
+        <Route exact path="/employees" render={(props) => {
+          return <Employee
+            setEmployeeState={this.setEmployeeState}
+            employees={this.state.employees}
+          />
+        }} />
+        <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
+          return <EmployeeDetails
+            {...props}
+            employees={this.state.employees}
+            setEmployeeState={this.setEmployeeState}
           />
         }} />
       </React.Fragment >
