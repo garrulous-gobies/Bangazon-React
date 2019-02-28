@@ -18,6 +18,7 @@ export default class Orders extends Component {
 
   //TODO: Determine method to add specific customer
   newOrderSubmit = e => {
+    e.target.checkValidity();
     e.preventDefault();
     const newOrderToSave = {
       customer: this.state.customer,
@@ -46,7 +47,7 @@ export default class Orders extends Component {
         <form onSubmit={this.newOrderSubmit}>
           <p>
             <label htmlFor="customer">Customer (required): </label>
-            <select id="customer" onChange={(e) => this.setState({ 'customer': e.target.value == '' ? null : e.target.value })}>
+            <select required id="customer" onChange={(e) => this.setState({ 'customer': e.target.value == '' ? null : e.target.value })}>
               <option value={null}></option>
               {this.props.customers.map(customer =>
 

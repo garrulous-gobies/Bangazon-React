@@ -54,7 +54,6 @@ export default class Order extends Component {
           <p>
             <label htmlFor="customer">Customer: </label>
             <select id="customer" onChange={(e) => this.setState({ 'customer': e.target.value == '' ? null : e.target.value })}>
-              <option value={null}></option>
               {/* default value for customer is the order's customer */}
               {this.props.customers.map(customer =>
 
@@ -74,7 +73,7 @@ export default class Order extends Component {
             </select>
           </p>
           <p>
-            <label htmlFor="payment_typr">Payment Type: </label>
+            <label htmlFor="payment_type">Payment Type: </label>
             <select id="payment_type" onChange={(e) => this.setState({ 'payment_type': e.target.value })}>
               <option value={null}></option>
               {this.props.paymentTypes.map(paymentType =>
@@ -84,6 +83,7 @@ export default class Order extends Component {
                   <option selected key={paymentType.id} value={paymentType.url}>
                     {paymentType.name} | {paymentType.accountNumber}
                   </option>
+
                   :
 
                   <option key={paymentType.id} value={paymentType.url}>
