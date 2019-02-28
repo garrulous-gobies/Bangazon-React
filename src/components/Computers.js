@@ -19,6 +19,7 @@ export default class Computer extends Component {
   }
 
   newCompSubmit = e => {
+    e.target.checkValidity()
     e.preventDefault();
     const newCompToSave = {
       model: this.state.model,
@@ -52,11 +53,11 @@ export default class Computer extends Component {
         )}
         <form onSubmit={this.newCompSubmit}>
           <label htmlFor="model">Computer model</label>
-          <input onChange={this.handleFieldChange} id='model' type='text'></input>
+          <input required onChange={this.handleFieldChange} id='model' type='text'></input>
           <label htmlFor="manufacturer">Computer manufacturer</label>
-          <input onChange={this.handleFieldChange} id='manufacturer' type='text'></input>
+          <input required onChange={this.handleFieldChange} id='manufacturer' type='text'></input>
           <label htmlFor="purchaseDate">purchaseDate</label>
-          <input onChange={this.handleFieldChange} id='purchaseDate' type='date'></input>
+          <input required onChange={this.handleFieldChange} id='purchaseDate' type='date'></input>
           <label htmlFor="decommissionDate">Decommission Date: </label>
           <input onChange={this.handleFieldChange} id='decommissionDate' type='date'></input>
           <button type="submit">Create New Computer</button>

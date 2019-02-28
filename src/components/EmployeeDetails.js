@@ -47,6 +47,7 @@ export default class EmployeeDetails extends Component {
   }
 
   empUpdateSubmit = (e, id) => {
+    e.target.checkValidity()
     e.preventDefault()
     let item = {
       firstName: this.state.firstName,
@@ -74,13 +75,13 @@ export default class EmployeeDetails extends Component {
         </ul>
         <form onSubmit={(e) => this.empUpdateSubmit(e)}>
           <label htmlFor="firstName">First Name</label>
-          <input defaultValue={this.state.firstName} onChange={this.handleFieldChange} id='firstName' type='text'></input>
+          <input required defaultValue={this.state.firstName} onChange={this.handleFieldChange} id='firstName' type='text'></input>
 
           <label htmlFor="lastName">Last Name</label>
-          <input defaultValue={this.state.lastName} onChange={this.handleFieldChange} id='lastName' type='text'></input>
+          <input required defaultValue={this.state.lastName} onChange={this.handleFieldChange} id='lastName' type='text'></input>
 
           <label htmlFor="startDate">Start Date</label>
-          <input defaultValue={this.state.startDate} onChange={this.handleFieldChange} id='startDate' type='date'></input>
+          <input required defaultValue={this.state.startDate} onChange={this.handleFieldChange} id='startDate' type='date'></input>
 
           <label htmlFor="isSupervisor">Is a Supervior</label>
           <input checked={this.state.isSupervisor} onChange={this.handleCheckbox} id='isSupervisor' type='checkbox'></input>

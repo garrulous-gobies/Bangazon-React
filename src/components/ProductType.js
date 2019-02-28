@@ -16,6 +16,7 @@ export default class Computer extends Component {
   }
 
   newProdTypeSubmit = e => {
+    e.target.checkValidity()
     e.preventDefault();
     const prodType= {
       name: this.state.name
@@ -37,7 +38,7 @@ export default class Computer extends Component {
         )}
         <form onSubmit={this.newProdTypeSubmit}>
           <label htmlFor="name">Product Category Name: </label>
-          <input onChange={this.handleFieldChange} id='name' type='text'></input>
+          <input required onChange={this.handleFieldChange} id='name' type='text'></input>
           <button type="submit">Create New Product Category</button>
         </form>
       </>

@@ -23,6 +23,7 @@ export default class Department extends Component {
   }
 
   prodTypeUpdateSubmit = (e, id) => {
+    e.target.checkValidity()
     e.preventDefault()
     let item = {
       name: this.state.name
@@ -49,7 +50,7 @@ export default class Department extends Component {
         </ul>
         <form onSubmit={(e) => this.prodTypeUpdateSubmit(e)}>
           <label htmlFor="name">Product Category Name: </label>
-          <input defaultValue={this.state.name} onChange={this.handleFieldChange} id='name' type='text'></input>
+          <input required defaultValue={this.state.name} onChange={this.handleFieldChange} id='name' type='text'></input>
           <button type='submit'>Complete Edit</button>
         </form>
       </>

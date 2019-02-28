@@ -32,6 +32,7 @@ export default class ProductDetails extends Component {
   }
 
   productUpdateSubmit = (e, id) => {
+    e.target.checkValidity()
     e.preventDefault()
     const product = {
         title: this.state.product_title,
@@ -70,16 +71,16 @@ export default class ProductDetails extends Component {
                 <br></br>
                 <form onSubmit={(e) => this.productUpdateSubmit(e)}>
                     <label for="product_title">Product Title</label>
-                    <input defaultValue={this.state.product_title} onChange={this.handleFieldChange} id='product_title' type='text'></input>
+                    <input required defaultValue={this.state.product_title} onChange={this.handleFieldChange} id='product_title' type='text'></input>
 
                     <label for="product_price">Product Price</label>
-                    <input defaultValue={this.state.product_price} onChange={this.handleFieldChange} id='product_price' type='text'></input>
+                    <input required defaultValue={this.state.product_price} onChange={this.handleFieldChange} id='product_price' type='text'></input>
 
                     <label for="description">Product Description</label>
-                    <input defaultValue={this.state.description} onChange={this.handleFieldChange} id='description' type='text'></input>
+                    <input required defaultValue={this.state.description} onChange={this.handleFieldChange} id='description' type='text'></input>
 
                     <label for="quantity">Product Quantity</label>
-                    <input defaultValue={this.state.quantity} onChange={this.handleFieldChange} id='quantity' type='text'></input>
+                    <input required defaultValue={this.state.quantity} onChange={this.handleFieldChange} id='quantity' type='text'></input>
 
                     <button type="submit">Submit Edit</button>
                 </form>
