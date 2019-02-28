@@ -1,36 +1,41 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
-import Home from './Home'
+import Home from './Home';
 
-import DeptManager from '../modules/departmentManager'
+import DeptManager from '../modules/departmentManager';
 import Departments from './Departments';
 import DepartmentDetails from './DepartmentDetails';
 
-import CustManager from '../modules/customerManager'
+import CustManager from '../modules/customerManager';
 import Customers from './Customers';
 import CustomerDetails from './CustomerDetails';
 
-import ComputerManager from '../modules/computerManager'
-import Computers from './Computers'
-import ComputerDetails from './ComputerDetails'
+import ComputerManager from '../modules/computerManager';
+import Computers from './Computers';
+import ComputerDetails from './ComputerDetails';
 
-import ProductManager from '../modules/productManager'
-import Products from './Products'
-import ProductDetails from './ProductDetails'
+import ProductManager from '../modules/productManager';
+import Products from './Products';
+import ProductDetails from './ProductDetails';
 
-import paymentTypeManager from '../modules/paymentTypeManager'
-import productTypeManager from '../modules/productTypeManager'
+import paymentTypeManager from '../modules/paymentTypeManager';
 import PaymentType from "./PaymentType";
 import PaymentTypeDetails from "./PaymentTypeDetails";
 import TrainingPrograms from "./TrainingProgram";
 import TrainingProgramDetail from "./TrainingProgramDetails";
 import trainingProgramManager from "../modules/trainingProgramManager";
+
+import productTypeManager from '../modules/productTypeManager'
 import ProductTypes from "./ProductType"
 import ProductTypeDetails from "./ProductTypeDetails"
 
 import employeeManager from '../modules/employeeManager'
 import Employee from "./Employee";
 import EmployeeDetails from "./EmployeeDetails";
+
+import OrderManager from '../modules/orderManager';
+import Orders from "./Orders";
+import OrderDetails from "./OrderDetails";
 
 class ApplicationViews extends Component {
 
@@ -40,6 +45,7 @@ class ApplicationViews extends Component {
     paymentTypes: [],
     products: [],
     computers: [],
+    orders: [],
     trainingProgram: [],
     productTypes: [],
     employees: []
@@ -50,6 +56,10 @@ class ApplicationViews extends Component {
     DeptManager.getDepartments()
       .then(depts => {
         this.setState({ 'departments': depts })
+      })
+      .then(() => {
+        ComputerManager.getComputers()
+          .then(computers => this.setCompState(computers))
       })
 
     ComputerManager.getComputers()
@@ -80,6 +90,11 @@ class ApplicationViews extends Component {
         this.setState({ 'products': products })
       })
 
+    OrderManager.getOrders()
+      .then(orders => {
+        this.setState({ 'orders': orders })
+      })
+
     employeeManager.getEmployees()
       .then(emps => {
         this.setState({ 'employees': emps })
@@ -105,6 +120,10 @@ class ApplicationViews extends Component {
 
   setPayTypeState = payType => {
     this.setState({ 'paymentTypes': payType })
+  }
+
+  setOrderState = orders => {
+    this.setState({ 'orders': orders })
   }
 
   setTrainingState = training => {
@@ -151,6 +170,23 @@ class ApplicationViews extends Component {
             {...props}
             departments={this.state.departments}
             setDeptState={this.setDeptState}
+          />
+        }} />
+        <Route exact path="/orders" render={(props) => {
+          return <Orders
+            orders={this.state.orders}
+            setOrderState={this.setOrderState}
+            paymentTypes={this.state.paymentTypes}
+            customers={this.state.customers}
+          />
+        }} />
+        <Route exact path="/orders/:orderId(\d+)" render={(props) => {
+          return <OrderDetails
+            {...props}
+            orders={this.state.orders}
+            setOrderState={this.setOrderState}
+            paymentTypes={this.state.paymentTypes}
+            customers={this.state.customers}
           />
         }} />
         <Route exact path="/payment_types/" render={(props) => {

@@ -64,7 +64,7 @@ export default class Customer extends Component {
         <h5><Link to={`/customers`}>Back to Customers</Link></h5>
         <h1>CUSTOMER DETAIL</h1>
         <ul>
-          <li>Employee ID: {this.state.id}</li>
+          <li>Customer ID: {this.state.id}</li>
           <li>Name: {this.state.firstName} {this.state.lastName}</li>
           <li>Address: {this.state.street_address}; {this.state.city}, {this.state.state} {this.state.zipcode}</li>
           <li>Phone number: {this.state.phone_number}</li>
