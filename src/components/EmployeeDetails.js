@@ -12,6 +12,8 @@ export default class EmployeeDetails extends Component {
       'lastName': emp.lastName,
       'startDate': emp.startDate,
       'isSupervisor': emp.isSupervisor,
+      'department': emp.department,
+      'current_computer': emp.current_computer,
       'id': emp.id
     })
   }
@@ -20,7 +22,9 @@ export default class EmployeeDetails extends Component {
     firstName:"",
     lastName:"",
     startDate:"",
-    isSupervisor: false
+    isSupervisor: false,
+    department: {},
+    current_computer: null
 
   }
 
@@ -65,6 +69,9 @@ export default class EmployeeDetails extends Component {
           <li>Name: {this.state.firstName} {this.state.lastName}</li>
           <li>Date Started: {this.state.startDate}</li>
           <li>{this.state.isSupervisor === false ? "Not a Supervisor": "Is a Supervisor"}</li>
+          <li>{this.state.department == null ? "Currently not assigned to a department" : `In the ${this.state.department.name} department` }</li>
+          <li>{this.state.current_computer == null ? "Currently not assigned a computer" : `Currently assigned the ${this.state.current_computer.computer.manufacturer} ${this.state.current_computer.computer.model}`}</li>
+          
         </ul>
         <form onSubmit={(e) => this.empUpdateSubmit(e)}>
           <label htmlFor="firstName">First Name</label>
