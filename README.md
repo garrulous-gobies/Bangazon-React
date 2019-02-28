@@ -1,6 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Bangazon
+Bangzon is a react-app that consumes a Django REST API for a moc-ecommerce site. The user can read, create, update, and delete data relating to Bangazons employees, departments, customers, orders, computers, payment types, products, product types, and training programs.
 
-## Available Scripts
+
+## Getting Started
+To run Bangazon locally, create an empty directory and clone the project by running the following command in your terminal: ``` git@github.com:garrulous-gobies/Bangazon-React.git```
+
 
 In the project directory, you can run:
 
@@ -18,4 +22,10 @@ You will also see any lint errors in the console.
 
 ### Access the backend
 
-TO access the backend for this project go to [Django REST API](https://github.com/garrulous-gobies/BangazonAPI) and follow install instructions there.  
+To access the backend for this project go to [Bangazon's API](https://github.com/garrulous-gobies/BangazonAPI) and follow install instructions there.  
+
+
+### Enjoy Bangazon
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
