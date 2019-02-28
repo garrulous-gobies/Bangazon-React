@@ -38,7 +38,7 @@ export default class Orders extends Component {
           {this.props.orders.map(order =>
 
             <li key={order.id}>
-              <Link to={`/orders/${order.id}`}>Order ID: {order.id}</Link> | {order.payment_type == null ? 'Status: Open' : 'Status: Complete'}
+              <Link to={`/orders/${order.id}`}>Order ID: {order.id}</Link> | {order.payment_type === null ? 'Status: Open' : 'Status: Complete'}
             </li>
 
           )}
@@ -47,7 +47,7 @@ export default class Orders extends Component {
         <form onSubmit={this.newOrderSubmit}>
           <p>
             <label htmlFor="customer">Customer (required): </label>
-            <select required id="customer" onChange={(e) => this.setState({ 'customer': e.target.value == '' ? null : e.target.value })}>
+            <select required id="customer" onChange={(e) => this.setState({ 'customer': e.target.value === '' ? null : e.target.value })}>
               <option value={null}></option>
               {this.props.customers.map(customer =>
 
@@ -60,7 +60,7 @@ export default class Orders extends Component {
           </p>
           <p>
             <label htmlFor="payment_type">Payment Type: </label>
-            <select id="payment_type" onChange={(e) => this.setState({ 'payment_type': e.target.value == '' ? null : e.target.value })}>
+            <select id="payment_type" onChange={(e) => this.setState({ 'payment_type': e.target.value === '' ? null : e.target.value })}>
               <option value={null}></option>
               {this.props.paymentTypes.map(paymentType =>
 

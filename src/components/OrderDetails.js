@@ -53,11 +53,11 @@ export default class Order extends Component {
         <form onSubmit={(e) => this.OrderUpdateSubmit(e)}>
           <p>
             <label htmlFor="customer">Customer: </label>
-            <select id="customer" onChange={(e) => this.setState({ 'customer': e.target.value == '' ? null : e.target.value })}>
+            <select id="customer" onChange={(e) => this.setState({ 'customer': e.target.value === '' ? null : e.target.value })}>
               {/* default value for customer is the order's customer */}
               {this.props.customers.map(customer =>
 
-                this.state.customer == customer.url ?
+                this.state.customer === customer.url ?
 
                   <option selected key={customer.id} value={customer.url}>
                     {customer.lastName}, {customer.firstName}
@@ -78,7 +78,7 @@ export default class Order extends Component {
               <option value={null}></option>
               {this.props.paymentTypes.map(paymentType =>
 
-                this.state.payment_type == paymentType.url ?
+                this.state.payment_type === paymentType.url ?
 
                   <option selected key={paymentType.id} value={paymentType.url}>
                     {paymentType.name} | {paymentType.accountNumber}

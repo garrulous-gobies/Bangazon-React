@@ -45,7 +45,6 @@ class ApplicationViews extends Component {
     paymentTypes: [],
     products: [],
     computers: [],
-    paymentTypes: [],
     orders: [],
     trainingProgram: [],
     productTypes: [],
