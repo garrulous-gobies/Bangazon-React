@@ -50,7 +50,7 @@ export default class Employee extends Component {
 
           )}
         </ul>
-        <h1>ADD NEW Employee</h1>
+        <h1>ADD NEW EMPLOYEE</h1>
         <form onSubmit={this.newEmployeeSubmit}>
 
           <label htmlFor="firstName">First Name</label>
@@ -65,7 +65,7 @@ export default class Employee extends Component {
           <label htmlFor="isSupervisor">Supervior?</label>
           <input onChange={this.handleCheckbox} id='isSupervisor' type='checkbox'></input>
 
-          <button type="submit">Add New Customer</button>
+          <button type="submit">Add New Employee</button>
         </form>
       </>
     )
