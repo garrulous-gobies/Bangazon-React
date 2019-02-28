@@ -19,6 +19,7 @@ export default class PaymentType extends Component {
 
   // TODO: figure out a way to add a specific customer to a payment type when creating a new payment type
   newPayTypeSubmit = e => {
+    e.target.checkValidity()
     e.preventDefault();
     const newPayTypeToSave = {
       name: this.state.payType_name,
@@ -44,9 +45,9 @@ export default class PaymentType extends Component {
         </ul>
         <form onSubmit={(e) => this.newPayTypeSubmit(e)}>
           <label htmlFor="payType_name">Payment Type Name</label>
-          <input defaultValue={this.state.payType_name} onChange={this.handleFieldChange} id='payType_name' type='text'></input>
+          <input required defaultValue={this.state.payType_name} onChange={this.handleFieldChange} id='payType_name' type='text'></input>
           <label htmlFor="payType_accountNumber">Payment Type Account Number</label>
-          <input defaultValue={this.state.payType_accountNumber} onChange={this.handleFieldChange} id='payType_accountNumber' type='text'></input>
+          <input required defaultValue={this.state.payType_accountNumber} onChange={this.handleFieldChange} id='payType_accountNumber' type='number'></input>
           <button type='submit'>Create New Payment Type</button>
         </form>
 

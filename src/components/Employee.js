@@ -25,6 +25,7 @@ export default class Employee extends Component {
   }
 
   newEmployeeSubmit = e => {
+    e.target.checkValidity()
     e.preventDefault();
     const newEmployeeToSave = {
       firstName: this.state.firstName,
@@ -54,13 +55,13 @@ export default class Employee extends Component {
         <form onSubmit={this.newEmployeeSubmit}>
 
           <label htmlFor="firstName">First Name</label>
-          <input onChange={this.handleFieldChange} id='firstName' type='text'></input>
+          <input required onChange={this.handleFieldChange} id='firstName' type='text'></input>
 
           <label htmlFor="lastName">Last Name</label>
-          <input onChange={this.handleFieldChange} id='lastName' type='text'></input>
+          <input required onChange={this.handleFieldChange} id='lastName' type='text'></input>
 
           <label htmlFor="startDate">Start Date</label>
-          <input onChange={this.handleFieldChange} id='startDate' type='date'></input>
+          <input required onChange={this.handleFieldChange} id='startDate' type='date'></input>
 
           <label htmlFor="isSupervisor">Supervior?</label>
           <input onChange={this.handleCheckbox} id='isSupervisor' type='checkbox'></input>

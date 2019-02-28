@@ -25,6 +25,7 @@ export default class Department extends Component {
   }
 
   deptUpdateSubmit = (e, id) => {
+    e.target.checkValidity()
     e.preventDefault()
     let item = {
       name: this.state.dept_name,
@@ -46,9 +47,9 @@ export default class Department extends Component {
         </ul>
         <form onSubmit={(e) => this.deptUpdateSubmit(e)}>
           <label htmlFor="dept_name">Dept Name</label>
-          <input defaultValue={this.state.dept_name} onChange={this.handleFieldChange} id='dept_name' type='text'></input>
+          <input required defaultValue={this.state.dept_name} onChange={this.handleFieldChange} id='dept_name' type='text'></input>
           <label htmlFor="dept_budget">Dept Budget</label>
-          <input defaultValue={this.state.dept_budget} onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
+          <input required defaultValue={this.state.dept_budget} onChange={this.handleFieldChange} id='dept_budget' type='text'></input>
           <button type='submit'>Complete Edit</button>
         </form>
       </>

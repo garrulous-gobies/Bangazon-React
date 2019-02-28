@@ -24,6 +24,7 @@ export default class Customers extends Component {
   }
 
   newCustomerSubmit = e => {
+    e.target.checkValidity()
     e.preventDefault();
     const newCustToSave = {
       firstName: this.state.firstName,
@@ -56,35 +57,35 @@ export default class Customers extends Component {
         <form onSubmit={this.newCustomerSubmit}>
           <p>
             <label htmlFor="firstName">First Name</label>
-            <input onChange={this.handleFieldChange} id='firstName' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='firstName' type='text'></input>
           </p>
           <p>
             <label htmlFor="lastName">Last Name</label>
-            <input onChange={this.handleFieldChange} id='lastName' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='lastName' type='text'></input>
           </p>
           <p>
             <label htmlFor="street_address">Street Address</label>
-            <input onChange={this.handleFieldChange} id='street_address' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='street_address' type='text'></input>
           </p>
           <p>
             <label htmlFor="city">City</label>
-            <input onChange={this.handleFieldChange} id='city' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='city' type='text'></input>
           </p>
           <p>
             <label htmlFor="state_">State</label>
-            <input onChange={this.handleFieldChange} id='state_' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='state_' type='text'></input>
           </p>
           <p>
             <label htmlFor="zipcode">Zipcode</label>
-            <input onChange={this.handleFieldChange} id='zipcode' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='zipcode' type='text'></input>
           </p>
           <p>
             <label htmlFor="phone_number">Phone Number</label>
-            <input onChange={this.handleFieldChange} id='phone_number' type='number'></input>
+            <input required onChange={this.handleFieldChange} id='phone_number' type='number'></input>
           </p>
           <p>
             <label htmlFor="date_joined">Date Joined</label>
-            <input onChange={this.handleFieldChange} id='date_joined' type='date'></input>
+            <input required onChange={this.handleFieldChange} id='date_joined' type='date'></input>
           </p>
           <p>
             <label htmlFor="date_deleted">Date Deleted</label>

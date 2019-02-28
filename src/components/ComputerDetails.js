@@ -31,6 +31,7 @@ export default class ComputerDetails extends Component {
   }
 
   compUpdateSubmit = (e, id) => {
+    e.target.checkValidity()
     e.preventDefault()
     const newCompToSave = {
       model: this.state.model,
@@ -70,11 +71,11 @@ export default class ComputerDetails extends Component {
                 </ul>
                 <form onSubmit={(e) => this.compUpdateSubmit(e)}>
                     <label htmlFor="model">Dept Name</label>
-                    <input defaultValue={this.state.model} onChange={this.handleFieldChange} id='model' type='text'></input>
+                    <input required defaultValue={this.state.model} onChange={this.handleFieldChange} id='model' type='text'></input>
                     <label htmlFor="manufacturer">Dept Budget</label>
-                    <input defaultValue={this.state.manufacturer} onChange={this.handleFieldChange} id='manufacturer' type='text'></input>
+                    <input required defaultValue={this.state.manufacturer} onChange={this.handleFieldChange} id='manufacturer' type='text'></input>
                     <label htmlFor="purchaseDate">purchaseDate</label>
-                    <input defaultValue={this.state.purchaseDate} onChange={this.handleFieldChange} id='purchaseDate' type='date'></input>
+                    <input required defaultValue={this.state.purchaseDate} onChange={this.handleFieldChange} id='purchaseDate' type='date'></input>
                     <label htmlFor="decommissionDate">Dept Budget</label>
                     <input defaultValue={this.state.decommissionDate} onChange={this.handleFieldChange} id='decommissionDate' type='date'></input>
                     <button type='submit'>Complete Edit</button>

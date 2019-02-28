@@ -29,6 +29,7 @@ export default class PaymentTypeDetails extends Component {
   }
 
   payTypeUpdateSubmit = (e, id) => {
+    e.target.checkValidity()
     e.preventDefault()
     let item = {
       name: this.state.payType_name,
@@ -56,9 +57,9 @@ export default class PaymentTypeDetails extends Component {
         <br></br>
         <form onSubmit={(e) => this.payTypeUpdateSubmit(e)}>
           <label htmlFor="payType_name">Payment Type Name</label>
-          <input defaultValue={this.state.payType_name} onChange={this.handleFieldChange} id='payType_name' type='text'></input>
+          <input required defaultValue={this.state.payType_name} onChange={this.handleFieldChange} id='payType_name' type='text'></input>
           <label htmlFor="payType_accountNumber">Payment Type Account Number</label>
-          <input defaultValue={this.state.payType_accountNumber} onChange={this.handleFieldChange} id='payType_accountNumber' type='text'></input>
+          <input required defaultValue={this.state.payType_accountNumber} onChange={this.handleFieldChange} id='payType_accountNumber' type='text'></input>
           <button type='submit'>Complete Edit</button>
         </form>
         <button onClick={() => this.deletePaymentType(`${this.state.id}`)}>Delete</button>
