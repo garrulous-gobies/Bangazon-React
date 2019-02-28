@@ -52,6 +52,48 @@ export default class Order extends Component {
         </ul>
         <form onSubmit={(e) => this.OrderUpdateSubmit(e)}>
           <p>
+            <label htmlFor="customer">Customer: </label>
+            <select id="customer" onChange={(e) => this.setState({ 'customer': e.target.value == '' ? null : e.target.value })}>
+              <option value={null}></option>
+              {/* default value for customer is the order's customer */}
+              {this.props.customers.map(customer =>
+
+                this.state.customer == customer.url ?
+
+                  <option selected key={customer.id} value={customer.url}>
+                    {customer.lastName}, {customer.firstName}
+                  </option>
+
+                  :
+
+                  <option key={customer.id} value={customer.url}>
+                    {customer.lastName}, {customer.firstName}
+                  </option>
+
+              )}
+            </select>
+          </p>
+          <p>
+            <label htmlFor="payment_typr">Payment Type: </label>
+            <select id="payment_type" onChange={(e) => this.setState({ 'payment_type': e.target.value })}>
+              <option value={null}></option>
+              {this.props.paymentTypes.map(paymentType =>
+
+                this.state.payment_type == paymentType.url ?
+
+                  <option selected key={paymentType.id} value={paymentType.url}>
+                    {paymentType.name} | {paymentType.accountNumber}
+                  </option>
+                  :
+
+                  <option key={paymentType.id} value={paymentType.url}>
+                    {paymentType.name} | {paymentType.accountNumber}
+                  </option>
+
+              )}
+            </select>
+          </p>
+          <p>
             <label htmlFor="payment_date">Payment Date</label>
             <input onChange={this.handleFieldChange} id='payment_date' type='date'></input>
           </p>

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import OrderManager from '../modules/orderManager';
 import { Link } from "react-router-dom";
 
-
 export default class Orders extends Component {
 
   state = {
+    customer: null,
     payment_date: null,
     payment_type: null
   }
@@ -20,7 +20,7 @@ export default class Orders extends Component {
   newOrderSubmit = e => {
     e.preventDefault();
     const newOrderToSave = {
-      customer: 'http://localhost:8000/api/v1/customers/1/',
+      customer: this.state.customer,
       payment_date: this.state.payment_date,
       payment_type: this.state.payment_type
     }
@@ -45,7 +45,33 @@ export default class Orders extends Component {
         <h1>ADD NEW ORDER</h1>
         <form onSubmit={this.newOrderSubmit}>
           <p>
-            <label htmlFor="payment_date">Payment Date</label>
+            <label htmlFor="customer">Customer (required): </label>
+            <select id="customer" onChange={(e) => this.setState({ 'customer': e.target.value == '' ? null : e.target.value })}>
+              <option value={null}></option>
+              {this.props.customers.map(customer =>
+
+                <option key={customer.id} value={customer.url}>
+                  {customer.lastName}, {customer.firstName}
+                </option>
+
+              )}
+            </select>
+          </p>
+          <p>
+            <label htmlFor="payment_type">Payment Type: </label>
+            <select id="payment_type" onChange={(e) => this.setState({ 'payment_type': e.target.value == '' ? null : e.target.value })}>
+              <option value={null}></option>
+              {this.props.paymentTypes.map(paymentType =>
+
+                <option key={paymentType.id} value={paymentType.url}>
+                  {paymentType.name} | {paymentType.accountNumber}
+                </option>
+
+              )}
+            </select>
+          </p>
+          <p>
+            <label htmlFor="payment_date">Payment Date: </label>
             <input onChange={this.handleFieldChange} id='payment_date' type='date'></input>
           </p>
           <button type="submit">Add New Order</button>

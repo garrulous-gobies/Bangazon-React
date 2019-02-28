@@ -177,6 +177,8 @@ class ApplicationViews extends Component {
           return <Orders
             orders={this.state.orders}
             setOrderState={this.setOrderState}
+            paymentTypes={this.state.paymentTypes}
+            customers={this.state.customers}
           />
         }} />
         <Route exact path="/orders/:orderId(\d+)" render={(props) => {
@@ -184,6 +186,8 @@ class ApplicationViews extends Component {
             {...props}
             orders={this.state.orders}
             setOrderState={this.setOrderState}
+            paymentTypes={this.state.paymentTypes}
+            customers={this.state.customers}
           />
         }} />
         <Route exact path="/payment_types/" render={(props) => {
