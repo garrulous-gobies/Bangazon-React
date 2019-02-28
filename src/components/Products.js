@@ -18,6 +18,7 @@ export default class Products extends Component {
   }
 
   newProductSubmit = e => {
+    e.target.checkValidity()
     e.preventDefault();
     const newProductToSave = {
       title: this.state.product_title,
@@ -45,16 +46,16 @@ export default class Products extends Component {
         </ul>
         <form onSubmit={this.newProductSubmit}>
             <label for="product_title">Product Title</label>
-            <input onChange={this.handleFieldChange} id='product_title' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='product_title' type='text'></input>
 
             <label for="product_price">Product Price</label>
-            <input onChange={this.handleFieldChange} id='product_price' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='product_price' type='text'></input>
 
             <label for="product_description">Product Description</label>
-            <input onChange={this.handleFieldChange} id='product_description' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='product_description' type='text'></input>
 
             <label for="product_quantity">Product Quantity</label>
-            <input onChange={this.handleFieldChange} id='product_quantity' type='text'></input>
+            <input required onChange={this.handleFieldChange} id='product_quantity' type='text'></input>
 
             <button type="submit">Create New Product</button>
         </form>

@@ -40,6 +40,7 @@ export default class Customer extends Component {
   }
 
   custUpdateSubmit = (e, id) => {
+    e.target.checkValidity()
     e.preventDefault()
     let item = {
       firstName: this.state.firstName,
@@ -79,31 +80,31 @@ export default class Customer extends Component {
         <form onSubmit={(e) => this.custUpdateSubmit(e)}>
           <p>
             <label htmlFor="firstName">First Name</label>
-            <input defaultValue={this.state.firstName} onChange={this.handleFieldChange} id='firstName' type='text'></input>
+            <input required defaultValue={this.state.firstName} onChange={this.handleFieldChange} id='firstName' type='text'></input>
           </p>
           <p>
             <label htmlFor="lastName">Last Name</label>
-            <input defaultValue={this.state.lastName} onChange={this.handleFieldChange} id='lastName' type='text'></input>
+            <input required defaultValue={this.state.lastName} onChange={this.handleFieldChange} id='lastName' type='text'></input>
           </p>
           <p>
             <label htmlFor="street_address">Street Address</label>
-            <input defaultValue={this.state.street_address} onChange={this.handleFieldChange} id='street_address' type='text'></input>
+            <input required defaultValue={this.state.street_address} onChange={this.handleFieldChange} id='street_address' type='text'></input>
           </p>
           <p>
             <label htmlFor="city">City</label>
-            <input defaultValue={this.state.city} onChange={this.handleFieldChange} id='city' type='text'></input>
+            <input required defaultValue={this.state.city} onChange={this.handleFieldChange} id='city' type='text'></input>
           </p>
           <p>
             <label htmlFor="state_">State</label>
-            <input defaultValue={this.state.state_} onChange={this.handleFieldChange} id='state_' type='text'></input>
+            <input required defaultValue={this.state.state_} onChange={this.handleFieldChange} id='state_' type='text'></input>
           </p>
           <p>
             <label htmlFor="zipcode">Zipcode</label>
-            <input defaultValue={this.state.zipcode} onChange={this.handleFieldChange} id='zipcode' type='text'></input>
+            <input required defaultValue={this.state.zipcode} onChange={this.handleFieldChange} id='zipcode' type='text'></input>
           </p>
           <p>
             <label htmlFor="phone_number">Phone Number</label>
-            <input defaultValue={this.state.phone_number} onChange={this.handleFieldChange} id='phone_number' type='number'></input>
+            <input required defaultValue={this.state.phone_number} onChange={this.handleFieldChange} id='phone_number' type='number'></input>
           </p>
           <p>
             <label htmlFor="date_joined">Date Joined</label>
